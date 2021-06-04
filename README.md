@@ -1,4 +1,4 @@
-# @36node/template-service
+# @36node/sniper
 
 [![version][0]][1] [![downloads][2]][3]
 
@@ -128,3 +128,10 @@ Find more in [@36node/sketch/docs/url.md](https://github.com/36node/sketch/blob/
 3. Commit your changes: `git commit -am 'feat: something'`
 4. Push to the branch: `git push -u origin feature/something`
 5. Submit a pull request :D
+
+## Reference
+
+[0]: https://img.shields.io/npm/v/@36node/sniper.svg?style=flat
+[1]: https://npmjs.com/package/@36node/sniper
+[2]: https://img.shields.io/npm/dm/@36node/sniper.svg?style=flat
+[3]: https://npmjs.com/package/@36node/sniper
