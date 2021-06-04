@@ -48,8 +48,11 @@ export class Service extends API {
     const templateStr = fs.readFileSync(tempFile).toString("utf8");
     const template = Handlebars.compile(templateStr);
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
     const page = await browser.newPage();
+
     // 默认 A4 纸宽高度
     const { width = 595, height = 842, data = [] } = req.body;
     await page.setViewport({ width, height });
