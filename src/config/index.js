@@ -51,5 +51,5 @@ export const SCREENSHOTS_PATH = env(
 );
 export const IMAGE_SERVER_PREFIX = env(
   "IMAGE_SERVER_PREFIX",
-  "http://turing-citymanagement.36node.com/screenshots/"
+  "http://turing-citymanagement.36node.com/screenshots"
 );
