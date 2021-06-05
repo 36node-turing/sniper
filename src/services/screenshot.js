@@ -55,7 +55,7 @@ export class Service extends API {
 
     // 默认 A4 纸宽高度
     const { width = 595, height = 842, data = [] } = req.body;
-    await page.setViewport({ width, height });
+    await page.setViewport({ width, height, deviceScaleFactor: 2 });
     const dataObj = data.reduce(
       (acc, { key, value }) => ({ ...acc, [key]: value }),
       {}
