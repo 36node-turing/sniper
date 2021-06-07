@@ -392,12 +392,9 @@ components:
     Screenshot:
       type: object
       properties:
-        uri:
+        base64:
           type: string
-          description: uri of screenshot result
-        expiredAt:
-          type: string
-          description: will delete the screenshot unitl expiredAt
+          description: screenshot result base64 img
 
     ScreenshotCreateDoc:
       type: object

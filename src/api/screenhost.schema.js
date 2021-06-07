@@ -32,11 +32,7 @@ export const createScreenshotResSchema = {
       additionalProperties: false,
       type: "object",
       properties: {
-        uri: { type: "string", description: "uri of screenshot result" },
-        expiredAt: {
-          type: "string",
-          description: "will delete the screenshot unitl expiredAt",
-        },
+        base64: { type: "string", description: "screenshot result base64 img" },
       },
     },
   },

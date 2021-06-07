@@ -9,11 +9,7 @@ import Handlebars from "handlebars";
 import API from "../api/screenhost";
 import { plain } from "../lib";
 import logger from "../lib/log";
-import {
-  TEMPLATES_PATH,
-  SCREENSHOTS_PATH,
-  IMAGE_SERVER_PREFIX,
-} from "../config";
+import { TEMPLATES_PATH } from "../config";
 
 const debug = Debug("sniper:screenshot");
 
@@ -34,11 +30,6 @@ export class Service extends API {
     debug("crete screenshot with body %o", req.body);
 
     const tempFile = `${TEMPLATES_PATH}/${req.body.template}.html`;
-    const imgName = `${new Date().getTime()}.png`;
-    const imgFile = `${SCREENSHOTS_PATH}/${imgName}`;
-    const uri = `${IMAGE_SERVER_PREFIX}/${imgName}`;
-    const expiredAt = new Date();
-    expiredAt.setHours(expiredAt.getHours() + 1);
 
     // 处理异常
     if (!fs.existsSync(tempFile)) {
@@ -60,19 +51,15 @@ export class Service extends API {
       (acc, { key, value }) => ({ ...acc, [key]: value }),
       {}
     );
-    logger.info("screen shot", dataObj, tempFile, imgFile, expiredAt);
+    logger.info("screen shotting", dataObj, tempFile);
 
     await page.setContent(template(dataObj));
-    await page.screenshot({
-      path: imgFile,
-      type: "png",
-      fullPage: false, //边滚动边截图
-    });
+    const base64 = await page.screenshot({ encoding: "base64" });
     await page.close();
     await browser.close();
 
     return {
-      body: plain({ uri, expiredAt }),
+      body: plain({ base64: `data:image/png;base64,${base64}` }),
     };
   }
 }

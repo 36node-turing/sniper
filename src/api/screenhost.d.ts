@@ -28,13 +28,9 @@ declare namespace API {
   export interface CreateScreenshotResponse {
     body: {
       /**
-       * uri of screenshot result
+       * screenshot result base64 img
        */
-      uri?: string;
-      /**
-       * will delete the screenshot unitl expiredAt
-       */
-      expiredAt?: string;
+      base64?: string;
     };
   }
   type Context<StateT, CustomT = {}> = RouterContext<StateT, CustomT>;

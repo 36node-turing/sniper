@@ -45,11 +45,3 @@ export const TEMPLATES_PATH = env(
   "TEMPLATES_PATH",
   `${process.cwd()}/templates`
 );
-export const SCREENSHOTS_PATH = env(
-  "SCREENSHOTS_PATH",
-  `${process.cwd()}/screenshots`
-);
-export const IMAGE_SERVER_PREFIX = env(
-  "IMAGE_SERVER_PREFIX",
-  "http://turing-citymanagement.36node.com/screenshots"
-);
